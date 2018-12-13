@@ -11,4 +11,4 @@ Features:
 - Cloud coverage
 - Wind speed
 - Sunrise and Sunset time (based on system time i.e, not geographical time)
-- Not responsive
+- Responsive
