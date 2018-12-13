@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WeatherApp</title>
+    <link  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css" />
+</head>
+
+<body>
+    <section class="hero is-primary secone">
+        <div class="hero-body" >
+            <div class="container">
+                <h1 class="title" align="center">
+                    Weather App
+                </h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST" style="margin-bottom:20%;">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-info">
+                                    Add City
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sectwo">
+        <div class="container">
+            <div class="row row-pb-md">
+                    {% for city_weather in weather_data %}
+                        <div class="col-md-4" style="margin-top:40px;">
+                            <div class="box">
+                                <article class="media">
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <p>
+                                                <h6 align=right style="color:#fff;">{{ city_weather.dtime }}</h6>
+                                                <span class="title"><h4 align=center style="color:#fff;"><b>{{ city_weather.city }},{{ city_weather.country }}</b></h4></span>
+                                                <span class="subtitle"><h2 align=center  style="color:#fff;"><b>{{ city_weather.temperature }}° F</b></h2></span>
+                                                <div class="media-left">
+                                                    <figure class="image is-50x50">
+                                                        <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
+                                                    </figure>
+                                                </div>
+                                                <span class="subtitle"><p align="center" style="margin-right:10px;">{{ city_weather.description }}</p></span>
+                                                <br>
+                                                <div class="row" style="display:flex;padding:0px 26px;">
+                                                    <div class="col">
+                                                    <span class="subtitle"><p><b>High: </b>{{ city_weather.max }}° F</p></span>
+                                                    <br>
+                                                    <span class="subtitle"><p><b>Low: </b>{{ city_weather.min }}° F</p></span>
+                                                    <br>
+                                                    <span class="subtitle"><p><b>Cloudy: </b>{{ city_weather.cloud }}%</p></span>
+                                                    <br>
+                                                    <span class="subtitle"><p><b>Sunrise: </b>{{ city_weather.sunrise }}</p></span>
+                                                    <br>
+                                                    </div>
+                                                    <div class="col">
+                                                    <span class="subtitle"><p><b>Humidity: </b>{{ city_weather.humidity }}%</p></span>
+                                                    <br>
+                                                    <span class="subtitle"><p><b>Pressure: </b>{{ city_weather.pressure }} hPa</p></span>
+                                                    <br>
+                                                    <span class="subtitle"><p><b>Wind: </b>{{ city_weather.wind }} Km/h</p></span>
+                                                    <br>
+                                                    <span class="subtitle"><p><b>Sunset: </b>{{ city_weather.sunset }}</p></span>
+                                                    <br>
+                                                    </div>
+                                                </div>
+                                                <div class="row2">
+                                                  <div class="collumn" style="border:none;">
+                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.0}}</p><br>
+                                                    <p style="line-height: 5px;">{{city_weather.temp.0}}° F</p>
+
+                                                  </div>
+                                                  <div class="collumn">
+                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.1}}</p><br>
+                                                    <p style="line-height: 5px;">{{city_weather.temp.1}}° F</p>
+
+                                                  </div>
+                                                  <div class="collumn">
+                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.2}}</p><br>
+                                                    <p style="line-height: 5px;">{{city_weather.temp.2}}° F</p>
+
+                                                  </div>
+                                                  <div class="collumn">
+                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.3}}</p><br>
+                                                    <p style="line-height: 5px;">{{city_weather.temp.3}}° F</p>
+
+                                                  </div>
+                                                  <div class="collumn">
+                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.4}}</p><br>
+                                                    <p style="line-height: 5px;">{{city_weather.temp.4}}° F</p>
+                                                  </div>
+                                                </div>
+                                                <div class="row3">
+                                                    <button class="accordion">{{city_weather.day.1}}</button>
+                                                    <div class="panel1"><hr>
+                                                      <h4 align=left>{{city_weather.time.0}}</h4><h4 align=right style="float:right;">{{city_weather.temp.0}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.1}}</h4><h4 align=right style="float:right;">{{city_weather.temp.1}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.2}}</h4><h4 align=right style="float:right;">{{city_weather.temp.2}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.3}}</h4><h4 align=right style="float:right;">{{city_weather.temp.3}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.4}}</h4><h4 align=right style="float:right;">{{city_weather.temp.4}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.5}}</h4><h4 align=right style="float:right;">{{city_weather.temp.5}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.6}}</h4><h4 align=right style="float:right;">{{city_weather.temp.6}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.7}}</h4><h4 align=right style="float:right;">{{city_weather.temp.7}}° F</h4><hr>
+                                                    </div>
+
+                                                    <button class="accordion">{{city_weather.day.2}}</button>
+                                                    <div class="panel1"><hr>
+                                                      <h4 align=left>{{city_weather.time.8}}</h4><h4 align=right style="float:right;">{{city_weather.temp.8}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.9}}</h4><h4 align=right style="float:right;">{{city_weather.temp.9}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.10}}</h4><h4 align=right style="float:right;">{{city_weather.temp.10}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.11}}</h4><h4 align=right style="float:right;">{{city_weather.temp.11}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.12}}</h4><h4 align=right style="float:right;">{{city_weather.temp.12}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.13}}</h4><h4 align=right style="float:right;">{{city_weather.temp.13}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.14}}</h4><h4 align=right style="float:right;">{{city_weather.temp.14}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.15}}</h4><h4 align=right style="float:right;">{{city_weather.temp.15}}° F</h4><hr>
+                                                    </div>
+
+                                                    <button class="accordion">{{city_weather.day.3}}</button>
+                                                    <div class="panel1"><hr>
+                                                      <h4 align=left>{{city_weather.time.16}}</h4><h4 align=right style="float:right;">{{city_weather.temp.16}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.17}}</h4><h4 align=right style="float:right;">{{city_weather.temp.17}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.18}}</h4><h4 align=right style="float:right;">{{city_weather.temp.18}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.19}}</h4><h4 align=right style="float:right;">{{city_weather.temp.19}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.20}}</h4><h4 align=right style="float:right;">{{city_weather.temp.20}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.21}}</h4><h4 align=right style="float:right;">{{city_weather.temp.21}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.22}}</h4><h4 align=right style="float:right;">{{city_weather.temp.22}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.23}}</h4><h4 align=right style="float:right;">{{city_weather.temp.23}}° F</h4><hr>
+                                                    </div>
+
+                                                    <button class="accordion">{{city_weather.day.4}}</button>
+                                                    <div class="panel1"><hr>
+                                                      <h4 align=left>{{city_weather.time.24}}</h4><h4 align=right style="float:right;">{{city_weather.temp.24}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.25}}</h4><h4 align=right style="float:right;">{{city_weather.temp.25}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.26}}</h4><h4 align=right style="float:right;">{{city_weather.temp.26}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.27}}</h4><h4 align=right style="float:right;">{{city_weather.temp.27}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.28}}</h4><h4 align=right style="float:right;">{{city_weather.temp.28}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.29}}</h4><h4 align=right style="float:right;">{{city_weather.temp.29}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.30}}</h4><h4 align=right style="float:right;">{{city_weather.temp.30}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.31}}</h4><h4 align=right style="float:right;">{{city_weather.temp.31}}° F</h4><hr>
+                                                    </div>
+
+                                                    <button class="accordion">{{city_weather.day.5}}</button>
+                                                    <div class="panel1"><hr>
+                                                      <h4 align=left>{{city_weather.time.32}}</h4><h4 align=right style="float:right;">{{city_weather.temp.32}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.33}}</h4><h4 align=right style="float:right;">{{city_weather.temp.33}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.34}}</h4><h4 align=right style="float:right;">{{city_weather.temp.34}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.35}}</h4><h4 align=right style="float:right;">{{city_weather.temp.35}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.36}}</h4><h4 align=right style="float:right;">{{city_weather.temp.36}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.37}}</h4><h4 align=right style="float:right;">{{city_weather.temp.37}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.38}}</h4><h4 align=right style="float:right;">{{city_weather.temp.38}}° F</h4><hr>
+                                                      <h4 align=left>{{city_weather.time.39}}</h4><h4 align=right style="float:right;">{{city_weather.temp.39}}° F</h4><hr>
+                                                    </div>
+                                                </div>
+                                            </p>
+                                            <form method="post" action="{% url 'weather_app:delete' id=city_weather.city %}">
+                                              {% csrf_token %}
+                                              <div class="wrapper">
+                                                <button type="submit" class="del">
+                                                  <p><span class="glyphicon glyphicon-trash"></span></p>
+                                                </button>
+                                              </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                          </div>
+                    {% endfor %}
+              </div>
+          </div>
+    </section>
+</body>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel1 = this.nextElementSibling;
+    if (panel1.style.maxHeight){
+      panel1.style.maxHeight = null;
+    } else {
+      panel1.style.maxHeight = panel1.scrollHeight + "px";
+    }
+  });
+}
+</script>
+</html>

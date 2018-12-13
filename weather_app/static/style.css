@@ -1,0 +1,121 @@
+
+.box{
+  height:650px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: url('/static/calm.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity:0.8;
+  box-shadow: 5px 8px 12px #000;
+  background-position:bottom;
+}
+.row2{
+  height:100px;
+  margin:2%;
+  display:flex;
+  border:solid 1px #000;
+  border-radius:10px;
+  margin-top:0;
+  z-index:1000;
+}
+.row3{
+  margin:2%;
+  margin-top:50px;
+}
+.col{
+  flex:50%;
+}
+.collumn{
+  border-left:solid 1px #000;
+  flex:20%;
+  text-align:center;
+  background: url('/static/cloud.jpeg');
+  background-size:cover;
+}
+h1,h2,h6,h3,p{
+  color:#fff;
+}
+img{
+  height:60px;
+  width:60px;
+  margin-left:252%;
+  background:#fff;
+  opacity:0.9;
+  border-radius:20px;
+}
+.accordion {
+    background-color: #b22222;
+    color: #fff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.4s;
+    margin:0;
+}
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #fff;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+.active, .accordion:hover {
+    background-color: #ccc;
+    color:#444;
+}
+
+/* Style the accordion panel1. Note: hidden by default */
+.panel1 {
+  padding: 3px 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin:0;
+}
+.panel1 h4{
+  display:inline;
+}
+.del{
+  position: absolute;
+  height:50px;
+  width:50px;
+  right: 0;
+  top: 95.5%;
+  border-radius:50%;
+  background-color:#b22222;
+  border:none;
+  box-shadow: 5px 8px 8px #000;
+  transition: transform .2s;
+}
+.del:hover{
+  transform: scale(2.5);
+}
+.del p:hover{
+  transform: scale(0.6);
+}
+.del p{
+  color:#fff;
+  text-align:center;
+  margin-bottom:14px;
+  margin-right: 9px;
+  transition: transform .2s;
+}
+.secone{
+  background-image: url('/static/imgpat.jpg');
+  height:20vh;
+}
+.sectwo{
+  background-image:url('/static/wet.jpg');
+  height:140vh;
+
+}
