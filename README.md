@@ -11,6 +11,6 @@ Features:
 - Cloud coverage
 - Wind speed
 - Sunrise and Sunset time (based on system time i.e, not geographical time)
-
-Must fix:
-- Not responsive
+- Time of weather update
+- 6 day weather forecast in 3 hour intervals
+- Responsive
