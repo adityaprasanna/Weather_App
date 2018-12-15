@@ -12,18 +12,16 @@
 </head>
 
 <body>
-    <section class="hero is-primary secone">
-        <div class="hero-body" >
+    <section class="is-primary secone">
             <div class="container">
                 <h1 class="title" align="center">
                     Weather App
                 </h1>
             </div>
-        </div>
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    <form method="POST" style="margin-bottom:20%;">
+                    <form method="POST">
                         {% csrf_token %}
                         <div class="field has-addons">
                             <div class="control is-expanded">
@@ -51,14 +49,12 @@
                                         <div class="content">
                                             <p>
                                                 <h6 align=right style="color:#fff;">{{ city_weather.dtime }}</h6>
-                                                <span class="title"><h4 align=center style="color:#fff;"><b>{{ city_weather.city }},{{ city_weather.country }}</b></h4></span>
+                                                <span class="title"><h4 align=center style="color:#fff;margin:0;"><b>{{ city_weather.city }},{{ city_weather.country }}</b></h4></span>
                                                 <span class="subtitle"><h2 align=center  style="color:#fff;"><b>{{ city_weather.temperature }}° F</b></h2></span>
-                                                <div class="media-left">
-                                                    <figure class="image is-50x50">
+                                                <div class="mediat">
                                                         <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
-                                                    </figure>
                                                 </div>
-                                                <span class="subtitle"><p align="center" style="margin-right:10px;">{{ city_weather.description }}</p></span>
+                                                <span class="subtitle"><p class="desc" align=center>{{ city_weather.description }}</p></span>
                                                 <br>
                                                 <div class="row" style="display:flex;padding:0px 26px;">
                                                     <div class="col">
@@ -84,28 +80,28 @@
                                                 </div>
                                                 <div class="row2">
                                                   <div class="collumn" style="border:none;">
-                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.0}}</p><br>
-                                                    <p style="line-height: 5px;">{{city_weather.temp.0}}° F</p>
+                                                    <p class="topr" style="vertical-align:middle;">{{city_weather.time.0}}</p><br>
+                                                    <p class="botr">{{city_weather.temp.0}}° F</p>
 
                                                   </div>
                                                   <div class="collumn">
-                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.1}}</p><br>
-                                                    <p style="line-height: 5px;">{{city_weather.temp.1}}° F</p>
+                                                    <p class="topr" style="vertical-align:middle;">{{city_weather.time.1}}</p><br>
+                                                    <p class="botr">{{city_weather.temp.1}}° F</p>
 
                                                   </div>
                                                   <div class="collumn">
-                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.2}}</p><br>
-                                                    <p style="line-height: 5px;">{{city_weather.temp.2}}° F</p>
+                                                    <p class="topr" style="vertical-align:middle;">{{city_weather.time.2}}</p><br>
+                                                    <p class="botr">{{city_weather.temp.2}}° F</p>
 
                                                   </div>
                                                   <div class="collumn">
-                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.3}}</p><br>
-                                                    <p style="line-height: 5px;">{{city_weather.temp.3}}° F</p>
+                                                    <p class="topr" style=";vertical-align:middle;">{{city_weather.time.3}}</p><br>
+                                                    <p class="botr">{{city_weather.temp.3}}° F</p>
 
                                                   </div>
                                                   <div class="collumn">
-                                                    <p style="line-height: 40px;vertical-align:middle;">{{city_weather.time.4}}</p><br>
-                                                    <p style="line-height: 5px;">{{city_weather.temp.4}}° F</p>
+                                                    <p class="topr" style="vertical-align:middle;">{{city_weather.time.4}}</p><br>
+                                                    <p class="botr">{{city_weather.temp.4}}° F</p>
                                                   </div>
                                                 </div>
                                                 <div class="row3">
